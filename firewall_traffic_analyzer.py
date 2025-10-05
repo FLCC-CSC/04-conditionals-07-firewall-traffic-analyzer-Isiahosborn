@@ -34,7 +34,7 @@ def main():
     REMOTE_ACCESS_HIGH_THRESHOLD_MB = 1000
 
     if port in (22, 3389) and size_mb >= REMOTE_ACCESS_HIGH_THRESHOLD_MB:
-        risk = "HIGH RISK: Potential unauthorized remote access detected."
+        risk = "HIGH RISK: Potential unauthorized remote access detected!"
     elif port == 80 and size_mb >= LARGE_UNENCRYPTED_THRESHOLD_MB:
         risk = "MEDIUM RISK: Large unencrypted data transfer detected."
     elif port == 443:
@@ -49,7 +49,7 @@ def main():
 
 if __name__ == "__main__":
     main()
-
+    
 ########### END YER CODE ABOVE THIS LINE ###########
 
     
