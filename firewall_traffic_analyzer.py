@@ -1,28 +1,44 @@
 # FILE NAME - firewall_traffic_analyzer.py
 
-# NAME: 
-# DATE: 
-# BRIEF DESCRIPTION:  
-
-
+# NAME: Isiah Osborn
+# DATE: 2025-10-05
+# BRIEF DESCRIPTION:
+#   Prompt for a port number and data transfer size (MB), then assess
+#   potential security risk based on common firewall red flags.
 
 # 1. Make sure you fill out the comments above
 # 2. Write your code in the proper spot
 # 3. Be sure to answer the Reflection Questions and Attestation below
 # 4. The Sample Output has been included in this code for your convenience
 
-
-
 ########## ENTER YER CODE BELOW THIS LINE ##########
 
+def main():
+    print("=== Network Traffic Security Analyzer ===\n")
 
+    port = int(input("Enter the port number (e.g., 80, 22, 443, 3389): ").strip())
+    size_mb = int(input("Enter the data transfer size in megabytes (MB): ").strip())
 
+    # Heuristics based on prompt + samples
+    LARGE_UNENCRYPTED_THRESHOLD_MB = 100
+    REMOTE_ACCESS_HIGH_THRESHOLD_MB = 1000
 
+    if port in (22, 3389) and size_mb >= REMOTE_ACCESS_HIGH_THRESHOLD_MB:
+        risk = "HIGH RISK: Potential unauthorized remote access detected!"
+    elif port == 80 and size_mb >= LARGE_UNENCRYPTED_THRESHOLD_MB:
+        risk = "MEDIUM RISK: Large unencrypted data transfer detected."
+    elif port == 443:
+        risk = "LOW RISK: Secure encrypted transfer detected."
+    else:
+        risk = "UNKNOWN: Unrecognized traffic pattern."
 
+    print("\nFIREWALL LOG:")
+    print(f"Port: {port}, Transfer Size: {size_mb} MB")
+    print(f"Risk Assessment: {risk}")
+    print("------------------------")
 
-
-
-
+if __name__ == "__main__":
+    main()
 
 ########### END YER CODE ABOVE THIS LINE ###########
 
