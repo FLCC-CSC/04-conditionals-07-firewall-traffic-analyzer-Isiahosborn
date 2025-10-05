@@ -16,22 +16,22 @@
 
 def main():
     print("=== Network Traffic Security Analyzer ===\n")
+    port_input = input("Enter the port number (e.g., 80, 22, 443, 3389): ")
     try:
-        port_input = input("Enter the port number (e.g., 80, 22, 443, 3389): ")
         port = int(port_input.strip())
     except ValueError:
         print("Error: Invalid or missing port number input.")
         return
 
+    size_input = input("Enter the data transfer size in megabytes (MB): ")
     try:
-        size_input = input("Enter the data transfer size in megabytes (MB): ")
         size_mb = int(size_input.strip())
     except ValueError:
         print("Error: Invalid or missing data transfer size input.")
         return
 
     LARGE_UNENCRYPTED_THRESHOLD_MB = 100
-    REMOTE_ACCESS_HIGH_THRESHOLD_MB = 1000
+    REMOTE_ACCESS_HIGH_THRESHOLD_MB = 10  # As your sample triggers high risk at 12 MB for port 22
 
     if port in (22, 3389) and size_mb >= REMOTE_ACCESS_HIGH_THRESHOLD_MB:
         risk = "HIGH RISK: Potential unauthorized remote access detected!"
