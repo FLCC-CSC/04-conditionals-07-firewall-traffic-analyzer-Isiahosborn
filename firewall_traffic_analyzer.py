@@ -15,7 +15,8 @@
 
 
 def main():
-    print("=== Network Traffic Security Analyzer ===\n")
+    print("=== Network Traffic Security Analyzer ===")
+    print()
     port_input = input("Enter the port number (e.g., 80, 22, 443, 3389): ")
     try:
         port = int(port_input.strip())
@@ -31,7 +32,7 @@ def main():
         return
 
     LARGE_UNENCRYPTED_THRESHOLD_MB = 100
-    REMOTE_ACCESS_HIGH_THRESHOLD_MB = 10  # As your sample triggers high risk at 12 MB for port 22
+    REMOTE_ACCESS_HIGH_THRESHOLD_MB = 10
 
     if port in (22, 3389) and size_mb >= REMOTE_ACCESS_HIGH_THRESHOLD_MB:
         risk = "HIGH RISK: Potential unauthorized remote access detected!"
@@ -42,7 +43,8 @@ def main():
     else:
         risk = "UNKNOWN: Unrecognized traffic pattern."
 
-    print("\nFIREWALL LOG:")
+    print()
+    print("FIREWALL LOG:")
     print(f"Port: {port}, Transfer Size: {size_mb} MB")
     print(f"Risk Assessment: {risk}")
     print("------------------------")
