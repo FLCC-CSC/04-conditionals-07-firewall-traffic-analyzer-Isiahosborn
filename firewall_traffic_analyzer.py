@@ -14,43 +14,25 @@
 ########## ENTER YER CODE BELOW THIS LINE ##########
 
 
-def main():
-    print("=== Network Traffic Security Analyzer ===")
-    print()
-    port_input = input("Enter the port number (e.g., 80, 22, 443, 3389): ")
-    try:
-        port = int(port_input.strip())
-    except ValueError:
-        print("Error: Invalid or missing port number input.")
-        return
+port_input = input("Enter the port number (e.g., 80, 22, 443, 3389): ").strip()
+if not port_input:
+    print("Error: Invalid or missing port number input.")
+    return
+try:
+    port = int(port_input)
+except ValueError:
+    print("Error: Invalid or missing port number input.")
+    return
 
-    size_input = input("Enter the data transfer size in megabytes (MB): ")
-    try:
-        size_mb = int(size_input.strip())
-    except ValueError:
-        print("Error: Invalid or missing data transfer size input.")
-        return
-
-    LARGE_UNENCRYPTED_THRESHOLD_MB = 100
-    REMOTE_ACCESS_HIGH_THRESHOLD_MB = 10
-
-    if port in (22, 3389) and size_mb >= REMOTE_ACCESS_HIGH_THRESHOLD_MB:
-        risk = "HIGH RISK: Potential unauthorized remote access detected!"
-    elif port == 80 and size_mb >= LARGE_UNENCRYPTED_THRESHOLD_MB:
-        risk = "MEDIUM RISK: Large unencrypted data transfer detected."
-    elif port == 443:
-        risk = "LOW RISK: Secure encrypted transfer detected."
-    else:
-        risk = "UNKNOWN: Unrecognized traffic pattern."
-
-    print()
-    print("FIREWALL LOG:")
-    print(f"Port: {port}, Transfer Size: {size_mb} MB")
-    print(f"Risk Assessment: {risk}")
-    print("------------------------")
-
-if __name__ == "__main__":
-    main()
+size_input = input("Enter the data transfer size in megabytes (MB): ").strip()
+if not size_input:
+    print("Error: Invalid or missing data transfer size input.")
+    return
+try:
+    size_mb = int(size_input)
+except ValueError:
+    print("Error: Invalid or missing data transfer size input.")
+    return
     
 ########### END YER CODE ABOVE THIS LINE ###########
 
