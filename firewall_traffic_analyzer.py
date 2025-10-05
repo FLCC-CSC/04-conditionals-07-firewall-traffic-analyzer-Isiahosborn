@@ -1,29 +1,39 @@
 # FILE NAME - firewall_traffic_analyzer.py
 
-# NAME: 
-# DATE: 
-# BRIEF DESCRIPTION:  
-
-
+# NAME: Isiah Osborn
+# DATE: 2025-10-05
+# BRIEF DESCRIPTION:
+#   Prompt for a port number and data transfer size (MB), then assess
+#   potential security risk based on common firewall red flags.
 
 # 1. Make sure you fill out the comments above
 # 2. Write your code in the proper spot
 # 3. Be sure to answer the Reflection Questions and Attestation below
 # 4. The Sample Output has been included in this code for your convenience
 
-
-
 ########## ENTER YER CODE BELOW THIS LINE ##########
 
 
+port_input = input("Enter the port number (e.g., 80, 22, 443, 3389): ").strip()
+if not port_input:
+    print("Error: Invalid or missing port number input.")
+    return
+try:
+    port = int(port_input)
+except ValueError:
+    print("Error: Invalid or missing port number input.")
+    return
 
-
-
-
-
-
-
-
+size_input = input("Enter the data transfer size in megabytes (MB): ").strip()
+if not size_input:
+    print("Error: Invalid or missing data transfer size input.")
+    return
+try:
+    size_mb = int(size_input)
+except ValueError:
+    print("Error: Invalid or missing data transfer size input.")
+    return
+    
 ########### END YER CODE ABOVE THIS LINE ###########
 
     
