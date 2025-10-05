@@ -19,14 +19,14 @@ def main():
     try:
         port_input = input("Enter the port number (e.g., 80, 22, 443, 3389): ")
         port = int(port_input.strip())
-    except (ValueError, IndexError):
+    except ValueError:
         print("Error: Invalid or missing port number input.")
         return
 
     try:
         size_input = input("Enter the data transfer size in megabytes (MB): ")
         size_mb = int(size_input.strip())
-    except (ValueError, IndexError):
+    except ValueError:
         print("Error: Invalid or missing data transfer size input.")
         return
 
@@ -48,7 +48,7 @@ def main():
     print("------------------------")
 
 if __name__ == "__main__":
-    main() 
+    main()
 
 ########### END YER CODE ABOVE THIS LINE ###########
 
